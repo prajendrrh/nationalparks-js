@@ -10,7 +10,7 @@
   "dependencies": {
     "restify": "^7.0.0",
     "config-multipaas": "0.2.2",
-    "mongojs": "^2.5.0"
+    "mongojs": "^3.1.0"
   },
   "devDependencies": {},
   "repository": {

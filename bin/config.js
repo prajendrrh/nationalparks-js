@@ -5,10 +5,10 @@ var autoconfig  = function (config_overrides){
     username: process.env.MONGODB_USER || process.env.DB_USERNAME || 'mongodb',
     password: process.env.MONGODB_PASSWORD || process.env.DB_PASSWORD || 'mongodb',
     table_name: process.env.MONGODB_DATABASE || process.env.DB_NAME || 'mongodb',
-    collection_name: process.env.MONGODB_DATABASE || process.env.DB_NAME || 'mongodb',
+    collection_name: process.env.MONGODB_COLLECTION || process.env.DB_COLLECTION || 'nationalparks',
     db_autoload: process.env.DB_AUTOLOAD || "false",
-    db_host: process.env.MONGODB_HOST || "mongodb",
-    db_port: process.env.MONGODB_PORT || "27017",
+    db_host: process.env.MONGODB_HOST || process.env.DB_HOST || "mongodb",
+    db_port: process.env.MONGODB_PORT || process.env.DB_PORT || "27017",
     db_proto: process.env.DB_PROTO || "mongodb",
     db_svc_name: process.env.DATABASE_SERVICE_NAME || "mongodb"
   })
@@ -23,7 +23,7 @@ var autoconfig  = function (config_overrides){
 
   var creds = config.get('username')+':'+config.get('password')+'@';
   var db_config = config.get('db_proto')+'://'+creds+config.get('db_host')+":"+config.get('db_port')+"/";
-      table     = config.get('table_name');
+  var table     = config.get('table_name');
 
   config.add({db_config: db_config+table});
   config.add({wsinfo: JSON.stringify(ws_info)});
